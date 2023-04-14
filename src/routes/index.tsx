@@ -1,5 +1,5 @@
 import type { StaticRouteProps } from "@impalajs/core";
-import { useState } from "preact/hooks";
+import { useState } from "react";
 import { App } from "../App";
 import logo from "../assets/impala.png";
 import "./index.css";

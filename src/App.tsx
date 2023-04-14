@@ -1,18 +1,30 @@
 import "./App.css";
-import { Head } from "@impalajs/preact/head";
-import { FunctionComponent } from "preact";
+import { Head } from "@impalajs/react/head";
+import React from "react";
+import { CartProvider, ShopifyProvider } from "@shopify/hydrogen-react";
 
 interface AppProps {
   title: string;
 }
 
-export const App: FunctionComponent<AppProps> = ({ children, title }) => {
+export const App: React.FC<React.PropsWithChildren<AppProps>> = ({
+  children,
+  title,
+}) => {
   return (
-    <>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      {children}
-    </>
+    <ShopifyProvider
+      storeDomain={import.meta.env.VITE_SHOPIFY_STORE}
+      storefrontToken={import.meta.env.VITE_STOREFRONT_TOKEN}
+      storefrontApiVersion="2023-01"
+      countryIsoCode="GB"
+      languageIsoCode="EN"
+    >
+      <CartProvider>
+        <Head>
+          <title>{title}</title>
+        </Head>
+        {children}
+      </CartProvider>
+    </ShopifyProvider>
   );
 };

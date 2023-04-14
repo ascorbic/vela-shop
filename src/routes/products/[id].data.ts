@@ -5,6 +5,8 @@ export async function getStaticPaths() {
     query products {
       allShopifyProduct {
         nodes {
+          storefrontId
+          id: storefrontId
           handle
           title
           priceRangeV2 {
@@ -16,6 +18,12 @@ export async function getStaticPaths() {
               amount
               currencyCode
             }
+          }
+          variants {
+            storefrontId
+            id: storefrontId
+            title
+            price
           }
           description
           descriptionHtml
