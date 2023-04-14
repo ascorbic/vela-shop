@@ -2,9 +2,9 @@ import { graphql } from "../gql";
 import { gqlClient } from "../lib/urql";
 
 export async function getRouteData() {
-  const productsQuery = await graphql(/* GraphQL */ `
+  const productsQuery = graphql(/* GraphQL */ `
     query homepage {
-      allShopifyProduct {
+      allShopifyProduct(filter: { status: { eq: ACTIVE } }) {
         nodes {
           storefrontId
           handle

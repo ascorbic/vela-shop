@@ -3,7 +3,7 @@ import { gqlClient } from "../../lib/urql";
 export async function getStaticPaths() {
   const productsQuery = await graphql(/* GraphQL */ `
     query products {
-      allShopifyProduct {
+      allShopifyProduct(filter: { status: { eq: ACTIVE } }) {
         nodes {
           storefrontId
           id: storefrontId
