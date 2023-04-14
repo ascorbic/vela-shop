@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n    query homepage {\n      allShopifyProduct {\n        nodes {\n          storefrontId\n          handle\n          title\n          featuredImage {\n            originalSrc\n            altText\n          }\n        }\n      }\n    }\n  ": types.HomepageDocument,
     "\n    query products {\n      allShopifyProduct {\n        nodes {\n          storefrontId\n          id: storefrontId\n          handle\n          title\n          priceRangeV2 {\n            maxVariantPrice {\n              amount\n              currencyCode\n            }\n            minVariantPrice {\n              amount\n              currencyCode\n            }\n          }\n          variants {\n            storefrontId\n            id: storefrontId\n            title\n            price\n          }\n          description\n          descriptionHtml\n          featuredImage {\n            src\n            originalSrc\n            altText\n            width\n          }\n        }\n      }\n    }\n  ": types.ProductsDocument,
 };
 
@@ -30,6 +31,10 @@ const documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n    query homepage {\n      allShopifyProduct {\n        nodes {\n          storefrontId\n          handle\n          title\n          featuredImage {\n            originalSrc\n            altText\n          }\n        }\n      }\n    }\n  "): (typeof documents)["\n    query homepage {\n      allShopifyProduct {\n        nodes {\n          storefrontId\n          handle\n          title\n          featuredImage {\n            originalSrc\n            altText\n          }\n        }\n      }\n    }\n  "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -1,27 +1,27 @@
 import type { StaticRouteProps } from "@impalajs/core";
-import { useState } from "react";
 import { App } from "../App";
-import logo from "../assets/impala.png";
 import "./index.css";
+import { Image } from "@unpic/react";
 
-export default function Hello({ path }: StaticRouteProps) {
-  const [count, setCount] = useState(0);
-
+export default function Hello({
+  routeData,
+}: StaticRouteProps<typeof import("./index.data")>) {
   return (
     <App title="Home">
-      <div className="App">
-        <div>
-          <img src={logo} alt="Impala Logo" className="logo" />
-        </div>
-        <h1>Impala</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-          <p>
-            Edit <code>src/routes/index.tsx</code> and save to test HMR
-          </p>
-        </div>
+      <div className="productGrid">
+        {routeData?.products?.map((product) => (
+          <a href={`/products/${product.handle}`} key={product.handle}>
+            {product.featuredImage?.originalSrc ? (
+              <Image
+                src={product.featuredImage?.originalSrc}
+                alt={product.title}
+                layout="fixed"
+                width={200}
+                height={200}
+              />
+            ) : null}
+          </a>
+        ))}
       </div>
     </App>
   );
