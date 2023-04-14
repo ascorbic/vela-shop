@@ -8,16 +8,23 @@
     "build:server": "vite build --ssr",
     "build:client": "vite build",
     "build:prerender": "impala prerender",
+    "generate": "graphql-codegen",
     "build": "npm run build:client && npm run build:server && npm run build:prerender",
     "preview": "vite preview"
   },
   "dependencies": {
     "@impalajs/core": "*",
     "@impalajs/preact": "*",
-    "preact": "^10.13.0"
+    "@urql/core": "^4.0.4",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "preact": "^10.13.0",
+    "urql": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
+    "@graphql-codegen/cli": "^3.3.0",
+    "@graphql-codegen/client-preset": "^3.0.0",
     "@preact/preset-vite": "^2.5.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
